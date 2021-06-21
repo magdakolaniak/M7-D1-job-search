@@ -44,8 +44,8 @@ class Job extends Component {
             }
           >
             {' '}
-            See more from "{this.state.job.company_name}" company here{' '}
-            <GiClick className="details-button" />
+            See more job offers from "{this.state.job.company_name}" company
+            here <GiClick className="details-button" />
           </Button>
         </Card.Body>
       </Card>
