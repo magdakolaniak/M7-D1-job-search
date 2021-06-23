@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 const JobList = ({ jobs }) => (
   <div>
-    {jobs.map((job) => (
+    {jobs.slice(0, 15).map((job) => (
       <Job key={job.id} job={job} />
     ))}
   </div>
