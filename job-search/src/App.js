@@ -7,6 +7,7 @@ import CompanyDetails from './components/CompanyDetails';
 import Job from './components/Job';
 
 import './styles/index.css';
+import FavList from './components/FavList';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             exact
           />
         </Row>
+        <Route path="/favourite" exact component={FavList} />
       </Container>
     </Router>
   );

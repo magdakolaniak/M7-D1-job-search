@@ -4,11 +4,13 @@ import '../styles/index.css';
 import { GrWorkshop } from 'react-icons/gr';
 
 import { Col, Row, InputGroup, FormControl } from 'react-bootstrap';
+import FavIndicator from './FavIndicator';
 
 class Home extends Component {
   state = {
     allJobs: [],
     query: '',
+    jobSelected: null,
   };
   fetchJobs = async () => {
     try {
@@ -41,18 +43,23 @@ class Home extends Component {
     return (
       <>
         <Row>
-          <InputGroup size="lg" className="search-desc">
-            <InputGroup.Text id="inputGroup-sizing-lg">
-              Start looking for a new Job!{' '}
-              <GrWorkshop className="search-bar-icon" />
-            </InputGroup.Text>
-            <FormControl
-              onChange={(e) => this.setState({ query: e.target.value })}
-              aria-label="Large"
-              placeholder="Which position are you looking for?"
-              aria-describedby="inputGroup-sizing-sm"
-            />
-          </InputGroup>
+          <Col md={8}>
+            <InputGroup size="lg" className="search-desc">
+              <InputGroup.Text id="inputGroup-sizing-lg">
+                Start looking for a new Job!{' '}
+                <GrWorkshop className="search-bar-icon" />
+              </InputGroup.Text>
+              <FormControl
+                onChange={(e) => this.setState({ query: e.target.value })}
+                aria-label="Large"
+                placeholder="Which position are you looking for?"
+                aria-describedby="inputGroup-sizing-sm"
+              />
+            </InputGroup>{' '}
+          </Col>
+          <Col md={4}>
+            <FavIndicator />
+          </Col>
         </Row>
         <Row>
           <span className="results-from-query">

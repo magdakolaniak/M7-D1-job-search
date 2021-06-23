@@ -3,10 +3,23 @@ import { Card, Button } from 'react-bootstrap';
 import '../styles/index.css';
 import { withRouter } from 'react-router-dom';
 import { GiClick } from 'react-icons/gi';
+import { IoIosAddCircle } from 'react-icons/io';
+import { connect } from 'react-redux';
+
+import { addCompanyToListAction } from '../actions';
+
+const mapStateToProps = (state) => state;
+
+const mapDispatchToProps = (dispatch) => ({
+  addToList: (company) => {
+    dispatch(addCompanyToListAction(company));
+  },
+});
 
 class Job extends Component {
   state = {
     job: this.props.job,
+    company: this.props.job.company_name,
   };
 
   render() {
@@ -47,10 +60,18 @@ class Job extends Component {
             See more job offers from "{this.state.job.company_name}" company
             here <GiClick className="details-button" />
           </Button>
+          <Button
+            variant="secondary"
+            className="add-to-fav-button"
+            onClick={() => this.props.addToList(this.state.company)}
+          >
+            <IoIosAddCircle />
+            Add to fav
+          </Button>
         </Card.Body>
       </Card>
     );
   }
 }
 
-export default withRouter(Job);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Job));
