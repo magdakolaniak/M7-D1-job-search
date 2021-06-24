@@ -87,3 +87,19 @@ body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+.trash-icon-div {
+  position: relative;
+  bottom: 45px;
+  left: 450px;
+}
+.trash-icon {
+  background-color: rgb(175, 45, 45) !important;
+  border-color: rgb(175, 45, 45) !important;
+}
+.heart-liked {
+  color: red;
+  font-size: 22px;
+}
+.heart-pure {
+  font-size: 22px;
+}

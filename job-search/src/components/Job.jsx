@@ -3,7 +3,8 @@ import { Card, Button } from 'react-bootstrap';
 import '../styles/index.css';
 import { withRouter } from 'react-router-dom';
 import { GiClick } from 'react-icons/gi';
-import { IoIosAddCircle } from 'react-icons/io';
+import { AiOutlineHeart } from 'react-icons/ai';
+import { BsFillHeartFill } from 'react-icons/bs';
 import { connect } from 'react-redux';
 
 import { addCompanyToListAction } from '../actions';
@@ -20,11 +21,18 @@ class Job extends Component {
   state = {
     job: this.props.job,
     company: this.props.job.company_name,
+    chooseOffer: this.props.chooseOffer,
+    selected: false,
+  };
+
+  manageClick = () => {
+    this.props.addToList(this.state.company);
+    this.setState({ selected: true });
   };
 
   render() {
     return (
-      <Card className="job-card">
+      <Card className="job-card" onClick={() => this.state.chooseOffer}>
         <Card.Header as="h5">{this.state.job.title}</Card.Header>
         <Card.Body>
           <Card.Title className="company">
@@ -60,13 +68,17 @@ class Job extends Component {
             See more job offers from "{this.state.job.company_name}" company
             here <GiClick className="details-button" />
           </Button>
+
           <Button
             variant="secondary"
             className="add-to-fav-button"
-            onClick={() => this.props.addToList(this.state.company)}
+            onClick={() => this.manageClick()}
           >
-            <IoIosAddCircle />
-            Add to fav
+            {!this.state.selected ? (
+              <AiOutlineHeart className="heart-pure" />
+            ) : (
+              <BsFillHeartFill className="heart-liked" />
+            )}
           </Button>
         </Card.Body>
       </Card>
